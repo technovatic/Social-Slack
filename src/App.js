@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -10,6 +10,7 @@ import { auth } from "./firebase";
 import Login from "./Login";
 import Spinner from "react-spinkit";
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [user, loading] = useAuthState(auth);
   if (loading) {
     return (
@@ -33,9 +34,21 @@ function App() {
           <>
             <Header />
             <AppBody>
-              <Sidebar />
+              <Sidebar
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+              />
               <Routes>
-                <Route exact path="/" element={<Chat />} />
+                <Route
+                  exact
+                  path="/"
+                  element={
+                    <Chat
+                      sidebarOpen={sidebarOpen}
+                      setSidebarOpen={setSidebarOpen}
+                    />
+                  }
+                />
                 {/* Chat */}
               </Routes>
             </AppBody>
@@ -72,4 +85,5 @@ const AppLoadingContent = styled.div`
 const AppBody = styled.div`
   display: flex;
   height: 100vh;
+  position: relative;
 `;

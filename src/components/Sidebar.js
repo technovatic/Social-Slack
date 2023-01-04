@@ -15,15 +15,19 @@ import SidebarOption from "./SidebarOption";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const [channels, loading] = useCollection(db.collection("rooms"));
   const [user] = useAuthState(auth);
   return (
-    <SidebarContainer>
+    <SidebarContainer
+      className="sidebar"
+      style={sidebarOpen ? { display: "grid" } : { display: "none" }}
+    >
       <SidebarHeader>
         <SidebarInfo>
-          <h2>PAPA FAM HQ</h2>
+          <h2>FARUK FAM HQ</h2>
           <h3>
             <FiberManualRecordIcon />
             {user?.displayName}
@@ -44,7 +48,13 @@ const Sidebar = () => {
       <hr />
       <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
       {channels?.docs.map((doc) => (
-        <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
+        <SidebarOption
+          key={doc.id}
+          id={doc.id}
+          title={doc.data().name}
+          setSidebarOpen={setSidebarOpen}
+          sidebarOpen={sidebarOpen}
+        />
       ))}
     </SidebarContainer>
   );

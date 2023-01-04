@@ -43,6 +43,7 @@ const HeaderContainer = styled.div`
   padding: 10px 0;
   background-color: var(--slack-color);
   color: white;
+  z-index: 999;
 `;
 
 const HeaderRight = styled.div`
@@ -90,7 +91,6 @@ const HeaderLeft = styled.div`
 
 const HeaderAvatar = styled(Avatar)`
   cursor: pointer;
-
   :hover {
     opacity: 0.8;
   }

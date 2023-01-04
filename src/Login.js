@@ -14,8 +14,8 @@ const Login = () => {
           src="https://cdn-icons-png.flaticon.com/512/2584/2584687.png"
           alt=""
         />
-        <h1>Sign in to the PAPA Fam</h1>
-        <p>papa.slack.com</p>
+        <h1>Sign in to Haruna Slack Build</h1>
+        <p>haruna.slack.com</p>
 
         <Button onClick={signIn}>Sign In with Google</Button>
       </LoginInnerContainer>

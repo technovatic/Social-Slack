@@ -5,9 +5,17 @@ import styled from "styled-components";
 import { enterRoom } from "../features/appSlice";
 import { db } from "../firebase";
 
-const SidebarOption = ({ Icon, title, addChannelOption, id }) => {
+const SidebarOption = ({
+  Icon,
+  title,
+  addChannelOption,
+  id,
+  sidebarOpen,
+  setSidebarOpen,
+}) => {
   const dispatch = useDispatch();
   const addChannel = () => {
+    sidebarOpen && setSidebarOpen(false);
     const channelName = prompt("Enter the channel name");
 
     if (channelName) {
@@ -17,6 +25,7 @@ const SidebarOption = ({ Icon, title, addChannelOption, id }) => {
     }
   };
   const SelectChannel = () => {
+    sidebarOpen && setSidebarOpen(false);
     if (id) {
       dispatch(
         enterRoom({

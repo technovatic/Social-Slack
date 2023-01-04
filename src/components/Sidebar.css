@@ -1,0 +1,8 @@
+@media screen and (max-width: 640px) {
+  .sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 1px;
+    z-index: 99;
+  }
+}

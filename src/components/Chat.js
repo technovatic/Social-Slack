@@ -1,15 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "../features/appSlice";
 import ChatInput from "./ChatInput";
 import { db } from "../firebase";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import Message from "./Message";
+import { IconButton } from "@mui/material";
 
-const Chat = () => {
+const Chat = ({ sidebarOpen, setSidebarOpen }) => {
   const chatRef = useRef(null);
   const roomId = useSelector(selectRoomId);
   const [roomDetails] = useDocument(
@@ -34,6 +36,9 @@ const Chat = () => {
         <>
           <Header>
             <HeaderLeft>
+              <IconButton onClick={() => setSidebarOpen(true)}>
+                <MenuIcon />
+              </IconButton>
               <h4>
                 <strong>#{roomDetails?.data().name}</strong>
               </h4>
@@ -76,14 +81,17 @@ const Chat = () => {
 export default Chat;
 
 const Header = styled.div`
+  position: sticky;
+  top: 0px;
   display: flex;
   justify-content: space-between;
   padding: 20px;
   border-bottom: 1px solid lightgray;
+  background-color: whitesmoke;
 `;
 
 const ChatBottom = styled.div`
-  padding-bottom: 200px;
+  padding-bottom: 120px;
 `;
 
 const ChatMessages = styled.div``;
