@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -34,9 +34,9 @@ const Chat = ({ sidebarOpen, setSidebarOpen }) => {
     <ChatContainer>
       {roomDetails && roomMessage && (
         <>
-          <Header>
+          <Header className="chat_header">
             <HeaderLeft>
-              <IconButton onClick={() => setSidebarOpen(true)}>
+              <IconButton onClick={() => setSidebarOpen(!sidebarOpen)}>
                 <MenuIcon />
               </IconButton>
               <h4>
@@ -82,7 +82,7 @@ export default Chat;
 
 const Header = styled.div`
   position: sticky;
-  top: 0px;
+  top: 60px;
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -91,13 +91,16 @@ const Header = styled.div`
 `;
 
 const ChatBottom = styled.div`
-  padding-bottom: 120px;
+  padding-bottom: 200px;
 `;
 
-const ChatMessages = styled.div``;
+const ChatMessages = styled.div`
+  padding-top: 60px;
+`;
 const HeaderLeft = styled.div`
   display: flex;
   align-items: center;
+
   > h4 {
     display: flex;
     text-transform: lowercase;
@@ -121,5 +124,4 @@ const ChatContainer = styled.div`
   flex: 0.7;
   flex-grow: 1;
   overflow-y: scroll;
-  margin-top: 60px;
 `;

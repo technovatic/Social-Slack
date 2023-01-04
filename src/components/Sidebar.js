@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import CreateIcon from "@mui/icons-material/Create";
@@ -20,6 +20,12 @@ import "./Sidebar.css";
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const [channels, loading] = useCollection(db.collection("rooms"));
   const [user] = useAuthState(auth);
+  const sidebarRef = useRef(null);
+  useEffect(() => {
+    sidebarRef.current?.scrollIntoView({
+      behviour: "smooth",
+    });
+  }, []);
   return (
     <SidebarContainer
       className="sidebar"
@@ -47,6 +53,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
       <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+
       {channels?.docs.map((doc) => (
         <SidebarOption
           key={doc.id}
@@ -56,6 +63,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           sidebarOpen={sidebarOpen}
         />
       ))}
+      <SidebarBottom ref={sidebarRef} />
     </SidebarContainer>
   );
 };
@@ -80,6 +88,9 @@ const SidebarContainer = styled.div`
     margin-bottom: 10px;
     border: 1px solid #49274b;
   }
+`;
+const SidebarBottom = styled.div`
+  padding-bottom: 200px;
 `;
 
 const SidebarHeader = styled.div`

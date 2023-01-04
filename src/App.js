@@ -33,7 +33,7 @@ function App() {
         ) : (
           <>
             <Header />
-            <AppBody>
+            <AppBody className="app_body">
               <Sidebar
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
