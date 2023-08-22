@@ -4,15 +4,11 @@
 
 This project is currently in development. Users can Signin with their google account, create channels, talk with team co-memebers and chat friends
 
-## Project Screen Shot(s)
+## Project Screen Shot
   
-[ PRETEND SCREEN SHOT IS HERE ]
-
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
+![image](https://github.com/Haruna2004/Slack-clone/assets/106999819/78f0a6f9-efea-4b91-b8d7-558bca35a97e)
 
 ## Installation and Setup Instructions
-
-#### Example:  
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
