@@ -26,7 +26,7 @@ To Visit App:
 
 ## Reflection
 
-  - This was a week long project built during a youtube session of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+  - This was a week long project built during a youtube session Software and Design with [Sonny Sangha](https://youtube.com/@SonnySangha) of Papa React Fam. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
   - One issue I faced was working with outdated npm packages and old configurations
   - What were some unexpected obstacles?
   - At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux,  a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app`.
